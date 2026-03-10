@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./components/Header";
 import SearchImg from "./assets/images/icon-search.svg";
+import playAudioImg from "./assets/images/icon-play.svg";
 
 function App() {
   return (
@@ -21,6 +22,25 @@ function App() {
           <img src={SearchImg} alt="search icon" />
         </button>
       </form>
+      <section id="result">
+        <section id="phonetics" className="flex items-center">
+          <div className="mr-auto">
+            <h1 className="text-light-black text-5xl font-bold">Keyboard</h1>
+            <span className="text-fantasia mt-1 inline-block">/ˈkiːbɔːd/</span>
+          </div>
+          <div className="">
+            <audio
+              className=""
+              src="https://api.dictionaryapi.dev/media/pronunciations/en/keyboard-us.mp3"
+            >
+              Your browser does not support the audio element.
+            </audio>
+            <button>
+              <img src={playAudioImg} className="h-18 w-18" alt="play audio" />
+            </button>
+          </div>
+        </section>
+      </section>
     </>
   );
 }
