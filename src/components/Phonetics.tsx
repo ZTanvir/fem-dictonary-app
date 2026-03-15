@@ -3,6 +3,8 @@ interface PhoneticsProps {
   phonetics: { word: string; phonetic: string; audio: string };
 }
 
+// only add audio from phonetics that match the phonetic
+
 export default function Phonetics({ phonetics }: PhoneticsProps) {
   return (
     <section id="phonetics" className="flex items-center">
@@ -14,14 +16,16 @@ export default function Phonetics({ phonetics }: PhoneticsProps) {
           {phonetics.phonetic}
         </span>
       </div>
-      <div className="">
-        <audio className="" src={phonetics.audio}>
-          Your browser does not support the audio element.
-        </audio>
-        <button>
-          <img src={playAudioImg} className="h-18 w-18" alt="play audio" />
-        </button>
-      </div>
+      {Boolean(phonetics.audio) && (
+        <div className="">
+          <audio className="" src={phonetics.audio}>
+            Your browser does not support the audio element.
+          </audio>
+          <button>
+            <img src={playAudioImg} className="h-18 w-18" alt="play audio" />
+          </button>
+        </div>
+      )}
     </section>
   );
 }
