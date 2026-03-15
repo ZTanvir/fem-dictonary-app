@@ -18,6 +18,7 @@ function App() {
     async function fetchWordData() {
       try {
         setIsLoading(true);
+        setError(null);
         const response = await fetch(`${apiUrl}/${word}`);
         if (!response.ok) {
           const errorMsg = await response.json();
@@ -36,6 +37,8 @@ function App() {
     fetchWordData();
   };
 
+  console.log(wordData);
+
   return (
     <>
       <Header />
@@ -51,30 +54,6 @@ function App() {
 
       {wordData.length > 0 && (
         <section id="result">
-          <section id="phonetics" className="flex items-center">
-            <div className="mr-auto">
-              <h1 className="text-light-black text-5xl font-bold">Keyboard</h1>
-              <span className="text-fantasia mt-1 inline-block">
-                /ˈkiːbɔːd/
-              </span>
-            </div>
-            <div className="">
-              <audio
-                className=""
-                src="https://api.dictionaryapi.dev/media/pronunciations/en/keyboard-us.mp3"
-              >
-                Your browser does not support the audio element.
-              </audio>
-              <button>
-                <img
-                  src={playAudioImg}
-                  className="h-18 w-18"
-                  alt="play audio"
-                />
-              </button>
-            </div>
-          </section>
-
           <section id="partOfSpeech">
             <h2>
               noun <span></span>
