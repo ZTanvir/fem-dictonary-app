@@ -1,27 +1,14 @@
 import "./App.css";
 import Header from "./components/Header";
-import SearchImg from "./assets/images/icon-search.svg";
 import playAudioImg from "./assets/images/icon-play.svg";
+import SearchWordForm from "./components/SearchWordForm";
 
 function App() {
+  const handleSearchWord = (word: string) => {};
   return (
     <>
       <Header />
-      <form className="relative">
-        <input
-          type="text"
-          name="search"
-          id="search"
-          className="bg-wild-sand text-light-black focus:ring-fantasia active:ring-fantasia caret-fantasia hover:ring-fantasia w-full rounded-2xl p-5 font-bold ring-0 transition duration-200 outline-none hover:ring-1 focus:ring-1 active:ring-1"
-          placeholder="Search for any word.."
-        />
-        <button
-          type="submit"
-          className="absolute top-1/2 right-3 -translate-1/2"
-        >
-          <img src={SearchImg} alt="search icon" />
-        </button>
-      </form>
+      <SearchWordForm handleSearchWord={handleSearchWord} />
       <section id="result">
         <section id="phonetics" className="flex items-center">
           <div className="mr-auto">
@@ -39,6 +26,24 @@ function App() {
               <img src={playAudioImg} className="h-18 w-18" alt="play audio" />
             </button>
           </div>
+        </section>
+
+        <section id="partOfSpeech">
+          <h2>
+            noun <span></span>
+          </h2>
+          <p>Meaning</p>
+          <ul>
+            <li>
+              (etc.) A set of keys used to operate a typewriter, computer etc.
+            </li>
+            <li>
+              (etc.) A set of keys used to operate a typewriter, computer etc.
+            </li>
+            <li>
+              (etc.) A set of keys used to operate a typewriter, computer etc.
+            </li>
+          </ul>
         </section>
       </section>
     </>
