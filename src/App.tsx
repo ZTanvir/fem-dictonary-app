@@ -5,6 +5,7 @@ import playAudioImg from "./assets/images/icon-play.svg";
 import SearchWordForm from "./components/SearchWordForm";
 import type { ErrorMsgResponse } from "./utils/types";
 import Loading from "./components/Loading";
+import ErrorMessage from "./components/ErrorMessage";
 
 const apiUrl = import.meta.env.VITE_DICTIONARY_API;
 
@@ -45,6 +46,8 @@ function App() {
           <Loading />
         </div>
       )}
+
+      {error && <ErrorMessage title={error.title} message={error.message} />}
 
       {wordData.length > 0 && (
         <section id="result">
