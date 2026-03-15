@@ -2,9 +2,38 @@ import "./App.css";
 import Header from "./components/Header";
 import playAudioImg from "./assets/images/icon-play.svg";
 import SearchWordForm from "./components/SearchWordForm";
+import { useState } from "react";
+import type { ErrorMsgResponse } from "./utils/types";
+
+const apiUrl = import.meta.env.VITE_DICTIONARY_API;
 
 function App() {
-  const handleSearchWord = (word: string) => {};
+  const [wordData, setWordData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<null | ErrorMsgResponse>(null);
+
+  const handleSearchWord = (word: string) => {
+    async function fetchWordData() {
+      try {
+        setIsLoading(true);
+        const response = await fetch(`${apiUrl}/${word}`);
+        if (!response.ok) {
+          const errorMsg = await response.json();
+          setError(errorMsg);
+          throw new Error();
+        }
+        const data = await response.json();
+        setWordData(data);
+        setError(null);
+      } catch {
+        setWordData([]);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchWordData();
+  };
+
   return (
     <>
       <Header />
