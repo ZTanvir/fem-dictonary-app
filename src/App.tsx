@@ -1,11 +1,11 @@
 import "./App.css";
 import { useState } from "react";
 import Header from "./components/Header";
-import playAudioImg from "./assets/images/icon-play.svg";
 import SearchWordForm from "./components/SearchWordForm";
 import type { ErrorMsgResponse } from "./utils/types";
 import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
+import SearchResult from "./components/SearchResult";
 
 const apiUrl = import.meta.env.VITE_DICTIONARY_API;
 
@@ -37,8 +37,6 @@ function App() {
     fetchWordData();
   };
 
-  console.log(wordData);
-
   return (
     <>
       <Header />
@@ -51,28 +49,7 @@ function App() {
       )}
 
       {error && <ErrorMessage title={error.title} message={error.message} />}
-
-      {wordData.length > 0 && (
-        <section id="result">
-          <section id="partOfSpeech">
-            <h2>
-              noun <span></span>
-            </h2>
-            <p>Meaning</p>
-            <ul>
-              <li>
-                (etc.) A set of keys used to operate a typewriter, computer etc.
-              </li>
-              <li>
-                (etc.) A set of keys used to operate a typewriter, computer etc.
-              </li>
-              <li>
-                (etc.) A set of keys used to operate a typewriter, computer etc.
-              </li>
-            </ul>
-          </section>
-        </section>
-      )}
+      {wordData.length > 0 && <SearchResult result={wordData} />}
     </>
   );
 }

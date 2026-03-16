@@ -1,20 +1,6 @@
-interface Definition {
-  definition: string;
-  example: string;
-}
-interface MeaningProps {
-  partsOfSpeech: string;
-  definitions: Definition[];
-  synonyms: string[];
-  antonyms: string[];
-}
+import type { Meaning } from "../utils/types";
 
-function Meaning({
-  partsOfSpeech,
-  definitions,
-  synonyms,
-  antonyms,
-}: MeaningProps) {
+function Meaning({ partsOfSpeech, definitions, synonyms, antonyms }: Meaning) {
   return (
     <section>
       <h3>{partsOfSpeech}</h3>
@@ -48,7 +34,7 @@ function Meaning({
 }
 
 interface MeaningListProps {
-  meanings: MeaningProps[];
+  meanings: Meaning[];
 }
 
 export default function MeaningList({ meanings }: MeaningListProps) {
