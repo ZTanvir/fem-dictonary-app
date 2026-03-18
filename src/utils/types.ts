@@ -3,19 +3,18 @@ export interface ErrorMsgResponse {
   resolution: string;
   title: string;
 }
+export interface phonetic {
+  text: string;
+  audio: string;
+}
 
 export interface Definition {
   definition: string;
   example: string;
 }
 
-export interface phonetic {
-  text: string;
-  audio: string;
-}
-
 export interface Meaning {
-  partsOfSpeech: string;
+  partOfSpeech: string;
   definitions: Definition[];
   synonyms: string[];
   antonyms: string[];

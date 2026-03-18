@@ -1,23 +1,31 @@
 import type { Meaning } from "../utils/types";
 
-function Meaning({ partsOfSpeech, definitions, synonyms, antonyms }: Meaning) {
+function Meaning({ partOfSpeech, definitions, synonyms, antonyms }: Meaning) {
   return (
-    <section>
-      <h3>{partsOfSpeech}</h3>
-      <p>Meaning</p>
-      <ul>
+    <section className="space-y-2">
+      <h3 className="text-light-black mb-10 flex items-center text-xl font-bold italic">
+        <span className="mr-10">{partOfSpeech}</span>
+        <span className="bg-light-black/10 inline-block h-px w-40 flex-1"></span>
+      </h3>
+      <p className="text-solid-gray mb-5">Meaning</p>
+      <ul className="marker:text-fantasia list-disc space-y-3 pl-10">
         {definitions.map((definition) => (
-          <li>
+          <li className="text-light-black flex flex-col gap-2 pl-2">
             <span>{definition.definition}</span>
-            {definition?.example && <span>{definition.definition}</span>}
+            {definition?.example && (
+              <span className="text-solid-gray">"{definition.definition}"</span>
+            )}
           </li>
         ))}
       </ul>
       {synonyms.length > 0 && (
-        <div>
-          <span>Synonyms</span>
-          {synonyms.map((synonym) => (
-            <span>{synonym}, </span>
+        <div className="mt-14">
+          <span className="text-solid-gray mr-4">Synonyms</span>
+          {synonyms.map((synonym, index, array) => (
+            <span className="text-fantasia font-semibold">
+              {synonym}
+              {index === array.length - 1 ? "." : ", "}
+            </span>
           ))}
         </div>
       )}
@@ -40,9 +48,10 @@ interface MeaningListProps {
 export default function MeaningList({ meanings }: MeaningListProps) {
   return (
     <>
-      {meanings.map((meaning) => (
+      {meanings.map((meaning, index) => (
         <Meaning
-          partsOfSpeech={meaning.partsOfSpeech}
+          key={index}
+          partOfSpeech={meaning.partOfSpeech}
           definitions={meaning.definitions}
           synonyms={meaning.synonyms}
           antonyms={meaning.antonyms}
