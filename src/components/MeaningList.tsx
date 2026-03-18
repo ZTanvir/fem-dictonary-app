@@ -9,8 +9,8 @@ function Meaning({ partOfSpeech, definitions, synonyms, antonyms }: Meaning) {
       </h3>
       <p className="text-solid-gray mb-5">Meaning</p>
       <ul className="marker:text-fantasia list-disc space-y-3 pl-10">
-        {definitions.map((definition) => (
-          <li className="text-light-black flex flex-col gap-2 pl-2">
+        {definitions.map((definition, index) => (
+          <li key={index} className="text-light-black flex flex-col gap-2 pl-2">
             <span>{definition.definition}</span>
             {definition?.example && (
               <span className="text-solid-gray">"{definition.definition}"</span>
