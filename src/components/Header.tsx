@@ -1,18 +1,15 @@
+import clsx from "clsx";
 import LogoImg from "../assets/images/logo.svg";
 import MoonImg from "../assets/images/icon-moon.svg?react";
 import DownArrowImg from "../assets/images/icon-arrow-down.svg?react";
-import { useRef, useState } from "react";
 import type { FontList } from "../utils/types";
-import clsx from "clsx";
+import { useRef, useState } from "react";
+import { useFontContext } from "./context/font-context/FontContext";
 
-interface HeaderProps {
-  fontType: string;
-  setFontType: React.Dispatch<React.SetStateAction<string>>;
-}
-
-export default function Header({ fontType, setFontType }: HeaderProps) {
+export default function Header() {
   const [mode, setMode] = useState("light");
   const dialogEl = useRef<HTMLDialogElement>(null);
+  const { fontType, setFontType } = useFontContext();
 
   const handleOpenDialog = () => {
     if (dialogEl.current?.open) {
@@ -23,7 +20,7 @@ export default function Header({ fontType, setFontType }: HeaderProps) {
   };
   const handleCloseDialog = (e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as HTMLButtonElement;
-    setFontType(target.value);
+    setFontType(target.value as FontList);
     dialogEl.current?.close();
   };
 
