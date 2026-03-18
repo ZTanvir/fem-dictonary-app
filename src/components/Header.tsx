@@ -2,6 +2,7 @@ import LogoImg from "../assets/images/logo.svg";
 import MoonImg from "../assets/images/icon-moon.svg?react";
 import DownArrowImg from "../assets/images/icon-arrow-down.svg?react";
 import { useRef, useState } from "react";
+import type { FontList } from "../utils/types";
 import clsx from "clsx";
 
 interface HeaderProps {
@@ -20,9 +21,24 @@ export default function Header({ fontType, setFontType }: HeaderProps) {
     }
     dialogEl.current?.show();
   };
-  const handleCloseDialog = () => {
+  const handleCloseDialog = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as HTMLButtonElement;
+    setFontType(target.value);
     dialogEl.current?.close();
   };
+
+  function generateFontName(fontClass: FontList) {
+    switch (fontClass) {
+      case "font-mono":
+        return "Mono";
+      case "font-sans":
+        return "Sans serif";
+      case "font-serif":
+        return "Serif";
+      default:
+        return "Sans serif";
+    }
+  }
 
   return (
     <header className="flex items-center bg-white">
@@ -30,8 +46,7 @@ export default function Header({ fontType, setFontType }: HeaderProps) {
       <div className="flex">
         <div className="relative">
           <button className="flex gap-2" onClick={handleOpenDialog}>
-            {fontType}
-            Python
+            {generateFontName(fontType as FontList)}
             <span className="self-center">
               <DownArrowImg />
             </span>
@@ -43,14 +58,23 @@ export default function Header({ fontType, setFontType }: HeaderProps) {
             <div className="flex flex-col space-y-3">
               <button
                 onClick={handleCloseDialog}
+                value="font-sans"
                 className="pl-4 text-left font-sans hover:cursor-pointer"
               >
                 Sans Serif
               </button>
-              <button className="pl-4 text-left font-serif hover:cursor-pointer">
+              <button
+                value="font-serif"
+                onClick={handleCloseDialog}
+                className="pl-4 text-left font-serif hover:cursor-pointer"
+              >
                 Serif
               </button>
-              <button className="pl-4 text-left font-mono hover:cursor-pointer">
+              <button
+                value="font-mono"
+                onClick={handleCloseDialog}
+                className="pl-4 text-left font-mono hover:cursor-pointer"
+              >
                 Mono
               </button>
             </div>

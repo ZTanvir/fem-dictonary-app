@@ -8,6 +8,7 @@ import ErrorMessage from "./components/ErrorMessage";
 import SearchResult from "./components/SearchResult";
 import Container from "./components/Container";
 import { timeBlocker } from "./utils/lib";
+import clsx from "clsx";
 
 const apiUrl = import.meta.env.VITE_DICTIONARY_API;
 
@@ -15,6 +16,7 @@ function App() {
   const [wordData, setWordData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<null | ErrorMsgResponse>(null);
+  const [fontType, setFontType] = useState("font-sans");
 
   const handleSearchWord = (word: string) => {
     async function fetchWordData() {
@@ -42,9 +44,9 @@ function App() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className={clsx("flex min-h-screen flex-col", fontType)}>
       <Container>
-        <Header />
+        <Header fontType={fontType} setFontType={setFontType} />
         <SearchWordForm handleSearchWord={handleSearchWord} />
 
         {isLoading && (

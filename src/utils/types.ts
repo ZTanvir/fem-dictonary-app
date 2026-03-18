@@ -27,3 +27,5 @@ export type DictionaryWord = {
   phonetics: phonetic[];
   sourceUrls: string[];
 };
+
+export type FontList = "font-sans" | "font-serif" | "font-mono";
