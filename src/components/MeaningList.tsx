@@ -22,7 +22,7 @@ function Meaning({ partOfSpeech, definitions, synonyms, antonyms }: Meaning) {
         <div className="mt-14">
           <span className="text-solid-gray mr-4">Synonyms</span>
           {synonyms.map((synonym, index, array) => (
-            <span className="text-fantasia font-semibold">
+            <span key={index} className="text-fantasia font-semibold">
               {synonym}
               {index === array.length - 1 ? "." : ", "}
             </span>

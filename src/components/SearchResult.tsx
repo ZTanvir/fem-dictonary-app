@@ -8,10 +8,9 @@ interface SearchResultProps {
 }
 
 export default function SearchResult({ result }: SearchResultProps) {
-  console.log(result);
   const phonetic = result[0];
   return (
-    <div className="space-y-6">
+    <div className="mt-8 space-y-6">
       <Phonetics
         word={phonetic.word}
         phonetic={phonetic.phonetic}

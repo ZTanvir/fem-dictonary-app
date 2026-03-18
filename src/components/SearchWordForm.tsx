@@ -14,7 +14,7 @@ export default function SearchWordForm({
     handleSearchWord(word);
   };
   return (
-    <form onSubmit={handleSubmitForm} className="relative">
+    <form onSubmit={handleSubmitForm} className="relative mt-10">
       <input
         value={word}
         onChange={(e) => setWord(e.target.value)}

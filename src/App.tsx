@@ -6,6 +6,7 @@ import type { ErrorMsgResponse } from "./utils/types";
 import Loading from "./components/Loading";
 import ErrorMessage from "./components/ErrorMessage";
 import SearchResult from "./components/SearchResult";
+import Container from "./components/Container";
 
 const apiUrl = import.meta.env.VITE_DICTIONARY_API;
 
@@ -38,19 +39,21 @@ function App() {
   };
 
   return (
-    <>
-      <Header />
-      <SearchWordForm handleSearchWord={handleSearchWord} />
+    <main>
+      <Container>
+        <Header />
+        <SearchWordForm handleSearchWord={handleSearchWord} />
 
-      {isLoading && (
-        <div className="flex h-full items-center justify-center">
-          <Loading />
-        </div>
-      )}
+        {isLoading && (
+          <div className="flex h-full items-center justify-center">
+            <Loading />
+          </div>
+        )}
 
-      {error && <ErrorMessage title={error.title} message={error.message} />}
-      {wordData.length > 0 && <SearchResult result={wordData} />}
-    </>
+        {error && <ErrorMessage title={error.title} message={error.message} />}
+        {wordData.length > 0 && <SearchResult result={wordData} />}
+      </Container>
+    </main>
   );
 }
 
