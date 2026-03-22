@@ -49,7 +49,7 @@ export default function Header() {
             </span>
           </button>
           <dialog
-            className="left-auto z-1 w-40 rounded-xl py-4 shadow-sm"
+            className="shadow-fantasia/60 left-auto z-1 w-40 rounded-xl py-4 shadow-2xl"
             ref={dialogEl}
           >
             <div className="flex flex-col space-y-3">
