@@ -4,13 +4,13 @@ function Meaning({ partOfSpeech, definitions, synonyms, antonyms }: Meaning) {
   return (
     <section className="space-y-2">
       <h3 className="text-light-black mb-10 flex items-center text-xl font-bold italic">
-        <span className="mr-10">{partOfSpeech}</span>
+        <span className="mr-10 dark:text-white">{partOfSpeech}</span>
         <span className="bg-light-black/10 inline-block h-px w-40 flex-1"></span>
       </h3>
       <p className="text-solid-gray mb-5">Meaning</p>
       <ul className="marker:text-fantasia list-disc space-y-3 pl-10">
         {definitions.map((definition, index) => (
-          <li key={index} className="text-light-black pl-2">
+          <li key={index} className="text-light-black pl-2 dark:text-white">
             <span>{definition.definition}</span>
             {definition?.example && (
               <>

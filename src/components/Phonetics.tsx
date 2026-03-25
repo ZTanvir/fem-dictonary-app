@@ -22,7 +22,9 @@ export default function Phonetics({
   return (
     <section id="phonetics" className="flex items-center">
       <div className="mr-auto">
-        <h1 className="text-light-black text-5xl font-bold">{word}</h1>
+        <h1 className="text-light-black text-5xl font-bold dark:text-white">
+          {word}
+        </h1>
         <span className="text-fantasia mt-1 inline-block">{phonetic}</span>
       </div>
       {searchAudio && Boolean(audio) && (
