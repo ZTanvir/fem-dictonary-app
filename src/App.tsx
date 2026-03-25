@@ -10,6 +10,7 @@ import Container from "./components/Container";
 import { timeBlocker } from "./utils/lib";
 import clsx from "clsx";
 import { useFontContext } from "./components/context/font-context/FontContext";
+import { useThemeContext } from "./components/context/theme-context/ThemeContext";
 
 const apiUrl = import.meta.env.VITE_DICTIONARY_API;
 
@@ -18,6 +19,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<null | ErrorMsgResponse>(null);
   const { fontType } = useFontContext();
+  const { theme } = useThemeContext();
 
   const handleSearchWord = (word: string) => {
     async function fetchWordData() {
@@ -46,6 +48,7 @@ function App() {
 
   return (
     <main
+      data-theme={theme}
       className={clsx("flex min-h-screen flex-col dark:bg-black", fontType)}
     >
       <Container>
