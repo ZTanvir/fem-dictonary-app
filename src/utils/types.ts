@@ -29,3 +29,5 @@ export type DictionaryWord = {
 };
 
 export type FontList = "font-sans" | "font-serif" | "font-mono";
+
+export type Theme = "light" | "dark";

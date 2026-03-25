@@ -3,11 +3,12 @@ import LogoImg from "../assets/images/logo.svg";
 import MoonImg from "../assets/images/icon-moon.svg?react";
 import DownArrowImg from "../assets/images/icon-arrow-down.svg?react";
 import type { FontList } from "../utils/types";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useFontContext } from "./context/font-context/FontContext";
+import { useThemeContext } from "./context/theme-context/ThemeContext";
 
 export default function Header() {
-  const [mode, setMode] = useState("light");
+  const { theme, setTheme } = useThemeContext();
   const dialogEl = useRef<HTMLDialogElement>(null);
   const { fontType, setFontType } = useFontContext();
 
@@ -52,7 +53,7 @@ export default function Header() {
             </span>
           </button>
           <dialog
-            className="dark:bg-retro-black left-auto z-1 w-40 rounded-xl py-4"
+            className="dark:bg-retro-black left-auto z-1 mt-4 w-40 rounded-xl py-4 drop-shadow-xl dark:drop-shadow-[0_0_10px_#a445ed]"
             ref={dialogEl}
           >
             <div className="flex flex-col space-y-3 font-semibold dark:text-white">
@@ -84,13 +85,13 @@ export default function Header() {
         <div className="flex gap-3">
           <div
             onClick={() =>
-              setMode((prev) => (prev === "light" ? "dark" : "light"))
+              setTheme((prev) => (prev === "light" ? "dark" : "light"))
             }
             className={clsx(
               "relative flex h-5 w-10 items-center rounded-xl p-0.5 transition-colors",
               {
-                "bg-solid-gray": mode === "light",
-                "bg-fantasia": mode !== "light",
+                "bg-solid-gray": theme === "light",
+                "bg-fantasia": theme !== "light",
               },
             )}
           >
@@ -98,8 +99,8 @@ export default function Header() {
               className={clsx(
                 "bg-full-white absolute h-3.5 w-3.5 rounded-full transition-all duration-200",
                 {
-                  "translate-x-0": mode === "light",
-                  "translate-x-5": mode !== "light",
+                  "translate-x-0": theme === "light",
+                  "translate-x-5": theme !== "light",
                 },
               )}
             ></div>
