@@ -45,7 +45,9 @@ function App() {
   };
 
   return (
-    <main className={clsx("flex min-h-screen flex-col", fontType)}>
+    <main
+      className={clsx("flex min-h-screen flex-col dark:bg-black", fontType)}
+    >
       <Container>
         <Header />
         <SearchWordForm handleSearchWord={handleSearchWord} />

@@ -31,7 +31,7 @@ export default function SearchWordForm({
           name="search"
           id="search"
           className={clsx(
-            "bg-wild-sand text-light-black w-full rounded-2xl p-3 text-lg font-bold ring-0 transition duration-200 outline-none hover:ring-2 focus:ring-2 active:ring-1",
+            "bg-wild-sand dark:bg-retro-black text-light-black w-full rounded-2xl p-3 text-lg font-bold ring-0 transition duration-200 outline-none hover:ring-2 focus:ring-2 active:ring-1 dark:text-white dark:placeholder:text-white",
 
             errorMsg
               ? "focus:ring-hot-kiss active:ring-hot-kiss caret-fantasia hover:ring-hot-kiss"

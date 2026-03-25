@@ -38,39 +38,42 @@ export default function Header() {
   }
 
   return (
-    <header className="flex items-center bg-white">
+    <header className="flex items-center bg-white dark:bg-black">
       <img className="mr-auto w-8" src={LogoImg} alt="Logo" />
       <div className="flex">
         <div className="relative">
-          <button className="flex gap-2" onClick={handleOpenDialog}>
+          <button
+            className="text-light-black flex gap-2 hover:cursor-pointer dark:text-white"
+            onClick={handleOpenDialog}
+          >
             {generateFontName(fontType as FontList)}
             <span className="self-center">
               <DownArrowImg />
             </span>
           </button>
           <dialog
-            className="shadow-fantasia/60 left-auto z-1 w-40 rounded-xl py-4 shadow-2xl"
+            className="dark:bg-retro-black left-auto z-1 w-40 rounded-xl py-4"
             ref={dialogEl}
           >
-            <div className="flex flex-col space-y-3">
+            <div className="flex flex-col space-y-3 font-semibold dark:text-white">
               <button
                 onClick={handleCloseDialog}
                 value="font-sans"
-                className="pl-4 text-left font-sans hover:cursor-pointer"
+                className="hover:text-fantasia pl-6 text-left font-sans hover:cursor-pointer"
               >
                 Sans Serif
               </button>
               <button
                 value="font-serif"
                 onClick={handleCloseDialog}
-                className="pl-4 text-left font-serif hover:cursor-pointer"
+                className="hover:text-fantasia pl-6 text-left font-serif hover:cursor-pointer"
               >
                 Serif
               </button>
               <button
                 value="font-mono"
                 onClick={handleCloseDialog}
-                className="pl-4 text-left font-mono hover:cursor-pointer"
+                className="hover:text-fantasia pl-6 text-left font-mono hover:cursor-pointer"
               >
                 Mono
               </button>
