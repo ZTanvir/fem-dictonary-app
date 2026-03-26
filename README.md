@@ -1,73 +1,65 @@
-# React + TypeScript + Vite
+# Frontend Mentor - Dictionary web app solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the [Dictionary web app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+- [Author](#author)
 
-## React Compiler
+## Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### The challenge
 
-## Expanding the ESLint configuration
+Users should be able to:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Search for words using the input field
+- See the Free Dictionary API's response for the searched word
+- See a form validation message when trying to submit a blank form
+- Play the audio file for a word when it's available
+- Switch between serif, sans serif, and monospace fonts
+- Switch between light and dark themes
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+- **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Screenshot
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+![Light desktop](./screenshot/Dictionary-app-light.png)
+![Dark desktop](./screenshot/Dictionary-app-desktop-dark.png)
+![Light mobile](./screenshot/Dictionary-app-mobile.png)
+![Dark mobile](./screenshot/Dictionary-app-mobile-dark.png)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Links
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Solution URL: [url](https://github.com/ZTanvir/fem-dictonary-app)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## My process
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Built with
+
+- Semantic HTML5 markup
+- Tailwind
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- Api fetch
+- [React](https://reactjs.org/) - JS library
+
+### What I learned
+
+- Divide and conquer: Instead of worrying about the entire app, break it into separate parts. Coding is simpler when focus on one small piece at a time.
+
+- Smart Default: By checking `prefers-color-scheme`, the app starts with the theme the user already prefers.
+
+## Author
+
+- Github - [Zahirul islam tanvir](https://github.com/ZTanvir)
+
+- Api - [Dictionary api](https://api.dictionaryapi.dev/api/v2/entries/en)
